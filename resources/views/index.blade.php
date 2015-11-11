@@ -17,9 +17,17 @@
     <body ng-app="planning-poker">
 	<nav><h1>Root</h1><a href="#">Home</a></nav>
 	
+	<p class="flash">{{{ $message or "" }}}</p>
+
 	@yield("content")
 
-	@yield("footer")
+	@section("footer")
 
+	<footer>
+		<?php echo "©" . date("Y") ?>
+		<a href="https://github.com/or9/planning-poker">Source</a>
+	</footer>
+
+	@stop
     </body>
 </html>

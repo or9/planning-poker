@@ -16,7 +16,7 @@ class SessionController extends Controller
 			return $this->createRandomSession();
 		}
 
-		return Response::view("index");
+		return Response::view("content");
 	}
 
 	public function joinSession ( $id = false ) 
@@ -26,7 +26,7 @@ class SessionController extends Controller
 			return Redirect::route("createSession");
 		}
 
-		return Response::view("index");
+		return Response::view("content");
 
 	}
 

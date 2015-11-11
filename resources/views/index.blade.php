@@ -15,9 +15,12 @@
     </head>
 
     <body ng-app="planning-poker">
+	@section("header")
+
 	<nav><h1>Root</h1><a href="#">Home</a></nav>
 	
 	<p class="flash">{{{ $message or "" }}}</p>
+	@show
 
 	@yield("content")
 
@@ -28,6 +31,6 @@
 		<a href="https://github.com/or9/planning-poker">Source</a>
 	</footer>
 
-	@stop
+	@show
     </body>
 </html>

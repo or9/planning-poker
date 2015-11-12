@@ -3,7 +3,8 @@
 
 <section id="session">
 
-	<h2>Blade Content</h2>
+	<h2>Join Existing Session</h2>
+	<p>You want to join this session, {{{ $message }}}</p>
 
 	<nav>
 		<fieldset>

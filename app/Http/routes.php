@@ -2,9 +2,9 @@
 
 Route::get("/", "SessionController@joinSession")->name("index");
 
-Route::post("/{REQUESTED_ID}", [ 
+Route::post("/s/{REQUESTED_ID}", [ 
 	"as" => "createSession", 
 	"uses" => "SessionController@create" 
 ]);
 
-Route::get("/{SESSION_ID?}", "SessionController@joinSession");
+Route::get("/s/{SESSION_ID?}", "SessionController@joinSession");

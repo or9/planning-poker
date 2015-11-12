@@ -12,11 +12,9 @@
 			"$interpolateProvider",
 			config ])
 
-		.run([ "$location", 
-			run ]);
+		.run(run);
 
 	function config ($routeProvider, $interpolateProvider) {
-		console.log("config'ing");
 
 		$interpolateProvider.startSymbol("[[");
 		$interpolateProvider.endSymbol("]]");
@@ -27,7 +25,7 @@
 				controllerAs: "INDEX",
 				templateUrl: "/js/views/index.html"
 			})
-			.when("/:SESSION_ID", {
+			.when("/session/:SESSION_ID", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
 				templateUrl: "/js/views/session.html"
@@ -42,11 +40,7 @@
 			});
 	}
 
-	function run ($location) {
-		var sessionId = doc.querySelector("#flash").innerHTML;
-
-		doc.querySelector("#flash").innerHTML = "";
-		$location.path(sessionId);
+	function run () {
 
 	}
 

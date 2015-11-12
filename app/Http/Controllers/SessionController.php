@@ -15,7 +15,7 @@ class SessionController extends Controller
 			return $this->createRandomSession();
 		}
 
-		return view("content", [ "message" => $id ]);
+		return view("session", [ "message" => $id ]);
 	}
 
 	public function joinSession ( $id = NULL ) 
@@ -25,7 +25,7 @@ class SessionController extends Controller
 			return $this->createRandomSession();
 		}
 
-		return view("content", [ "message" => $id ]);
+		return view("session", [ "message" => $id ]);
 
 	}
 
@@ -36,7 +36,8 @@ class SessionController extends Controller
 	private function createRandomSession () 
 	{
 		$randomSessionId = substr(uniqid("", true), -5);
-		return $this->joinSession($randomSessionId);
+
+		return view("none", [ "message" => $randomSessionId ]);
 	}
 
 }

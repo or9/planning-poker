@@ -1,7 +1,7 @@
 (function (module, undefined) {
 	"use strict";
 
-	module.directive("planning-cards", directive);
+	module.directive("planningCards", directive);
 
 	function directive () {
 		return {

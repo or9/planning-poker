@@ -8,4 +8,7 @@
 		this.greet = "Index >:";
 	}
 
-})(angular.module("planning-poker.ctrl.index", []));
+})(angular.module("planning-poker.ctrl.index", [
+	"or9.directives.cards",
+	"or9.directives.card"
+]));

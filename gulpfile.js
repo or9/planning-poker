@@ -25,37 +25,41 @@ function watchResult (e) {
 }
 
 function elixirCrap (mix) {
-    mix.sass('app.scss');
+	mix.sass('app.scss');
 
-    mix.scripts([
-	    "../bower_components/angular/angular.min.js",
-	    "../bower_components/angular-route/angular-route.min.js"
-    ], "public/js/vendor.js");
+	mix.scripts([
+		"../bower_components/angular/angular.min.js",
+		"../bower_components/angular-route/angular-route.min.js"
+	], "public/js/vendor.js");
 
-    mix.scripts([
-	    "../js/index.js",
-	    "../js/index-ctrl.js",
-	    "../js/index-service.js",
+	mix.scripts([
+		"../js/index.js",
+		"../js/index-ctrl.js",
+		"../js/index-service.js",
 
-	    "../js/session/ctrl.js",
-	    "../js/session/service.js",
+		"../js/session/ctrl.js",
+		"../js/session/service.js",
 
-	    "../js/active/ctrl.js",
-	    "../js/active/service.js",
+		"../js/active/ctrl.js",
+		"../js/active/service.js",
 
-	    "../js/components/cards.js",
-	    "../js/components/card.js"
+		"../js/components/cards.js",
+		"../js/components/card.js"
 
-    ], "public/js/app.js");
+	], "public/js/app.js");
 
-    // copy requires full path; cannot be relative as above -_-
-    // copy cannot exclude files using "!" -_-
-    mix.copy([
-	    "resources/assets/js/active/active.html",
-	    "resources/assets/js/session/session.html",
-	    "resources/assets/js/*.html"
+	// copy requires full path; cannot be relative as above -_-
+	// copy cannot exclude files using "!" -_-
+	mix.copy([
+		"resources/assets/js/active/active.html",
+		"resources/assets/js/session/session.html",
+		"resources/assets/js/*.html"
 
-    	], "public/js/views");
+	], "public/js/views");
+
+	mix.copy([
+		"resources/assets/js/components/**/*.html"
+	], "public/js/components");
 
 }
 

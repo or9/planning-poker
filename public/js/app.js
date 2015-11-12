@@ -54,7 +54,10 @@
 		this.greet = "Index >:";
 	}
 
-})(angular.module("planning-poker.ctrl.index", []));
+})(angular.module("planning-poker.ctrl.index", [
+	"or9.directives.cards",
+	"or9.directives.card"
+]));
 
 (function (module, undefined) {
 	"use strict";
@@ -127,7 +130,7 @@
 (function (module, undefined) {
 	"use strict";
 
-	module.directive("planning-cards", directive);
+	module.directive("planningCards", directive);
 
 	function directive () {
 		return {
@@ -143,7 +146,7 @@
 (function (module, undefined) {
 	"use strict";
 
-	module.directive("planning-card", directive);
+	module.directive("planningCard", directive);
 
 	function directive () {
 		return {

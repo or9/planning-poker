@@ -3,6 +3,7 @@
 
 	angular.module("planning-poker", [
 		"ngRoute",
+		"planning-poker.ctrl.index",
 		"planning-poker.ctrl.session",
 		"planning-poker.ctrl.active",
 		"or9.directives.cards"

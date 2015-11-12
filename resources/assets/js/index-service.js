@@ -1,11 +1,13 @@
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.factory("indexFactory", Factory);
+	module.factory("indexFactory", Factory);
 
 	function Factory ($http) {
+		console.log("servicing index");
+
 		return {
 		};
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.index"));

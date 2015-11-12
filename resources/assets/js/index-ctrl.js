@@ -1,10 +1,11 @@
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.controller("indexCtrl", Controller);
+	module.controller("indexCtrl", Controller);
 
 	function Controller ($scope, indexFactory) {
 		console.log("controlling index");
+		this.greet = "Index >:";
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.index", []));

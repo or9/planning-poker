@@ -3,6 +3,7 @@
 
 	angular.module("planning-poker", [
 		"ngRoute",
+		"planning-poker.ctrl.index",
 		"planning-poker.ctrl.session",
 		"planning-poker.ctrl.active",
 		"or9.directives.cards"
@@ -43,28 +44,31 @@
 
 })();
 
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.controller("indexCtrl", Controller);
+	module.controller("indexCtrl", Controller);
 
 	function Controller ($scope, indexFactory) {
 		console.log("controlling index");
+		this.greet = "Index >:";
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.index", []));
 
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.factory("indexFactory", Factory);
+	module.factory("indexFactory", Factory);
 
 	function Factory ($http) {
+		console.log("servicing index");
+
 		return {
 		};
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.index"));
 
 (function (module, undefined) {
 	"use strict";

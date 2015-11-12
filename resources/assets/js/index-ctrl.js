@@ -1,14 +1,21 @@
-(function (module, undefined) {
+(function (module, doc, undefined) {
 	"use strict";
 
 	module.controller("indexCtrl", Controller);
 
 	function Controller ($scope, indexFactory) {
-		console.log("controlling index");
-		this.greet = "Index >:";
+
+		this.sessionId = "";
+		this.navigate = navigate.bind(this);
+
+
+		function navigate (thing) {
+			console.log("what's thing? ", thing);
+			//this.location.path = location;
+		}
+
 	}
 
 })(angular.module("planning-poker.ctrl.index", [
-	"or9.directives.cards",
-	"or9.directives.card"
+	"or9.directives.cards"
 ]));

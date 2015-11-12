@@ -1,15 +1,19 @@
-(function (undefined) {
+(function (doc, undefined) {
 	"use strict";
 
 	angular.module("planning-poker", [
 		"ngRoute",
 		"planning-poker.ctrl.index",
 		"planning-poker.ctrl.session",
-		"planning-poker.ctrl.active",
-		"or9.directives.cards"
+		"planning-poker.ctrl.active"
 		])
-		.config(config)
-		.run(run);
+
+		.config([ "$routeProvider",
+			"$interpolateProvider",
+			config ])
+
+		.run([ "$location", 
+			run ]);
 
 	function config ($routeProvider, $interpolateProvider) {
 		console.log("config'ing");
@@ -38,25 +42,36 @@
 			});
 	}
 
-	function run () {
-		console.log("running");
+	function run ($location) {
+		var sessionId = doc.querySelector("#flash").innerHTML;
+
+		doc.querySelector("#flash").innerHTML = "";
+		$location.path(sessionId);
+
 	}
 
-})();
+})(document);
 
-(function (module, undefined) {
+(function (module, doc, undefined) {
 	"use strict";
 
 	module.controller("indexCtrl", Controller);
 
 	function Controller ($scope, indexFactory) {
-		console.log("controlling index");
-		this.greet = "Index >:";
+
+		this.sessionId = "";
+		this.navigate = navigate.bind(this);
+
+
+		function navigate (thing) {
+			console.log("what's thing? ", thing);
+			//this.location.path = location;
+		}
+
 	}
 
 })(angular.module("planning-poker.ctrl.index", [
-	"or9.directives.cards",
-	"or9.directives.card"
+	"or9.directives.cards"
 ]));
 
 (function (module, undefined) {

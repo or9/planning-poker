@@ -19,7 +19,7 @@
 
 	<nav><h1>Root</h1><a href="#">Home</a></nav>
 	
-	<p class="flash">{{{ $message or "" }}}</p>
+	<p id="flash" class="flash">{{{ $message or "" }}}</p>
 	@show
 
 	@yield("content")

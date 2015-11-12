@@ -1,7 +1,12 @@
 (function (undefined) {
 	"use strict";
 
-	angular.module("planning-poker", ["ngRoute"])
+	angular.module("planning-poker", [
+		"ngRoute",
+		"planning-poker.ctrl.session",
+		"planning-poker.ctrl.active",
+		"or9.directives.cards"
+		])
 		.config(config)
 		.run(run);
 
@@ -15,17 +20,17 @@
 			.when("/", {
 				controller: "indexCtrl",
 				controllerAs: "INDEX",
-				templateUrl: "js/views/index.html"
+				templateUrl: "/js/views/index.html"
 			})
 			.when("/:SESSION_ID", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
-				templateUrl: "js/views/session.html"
+				templateUrl: "/js/views/session.html"
 			})
 			.when("/active", {
 				controller: "activeSessionsCtrl",
 				controllerAs: "ACTIVE",
-				templateUrl: "js/views/active.html"
+				templateUrl: "/js/views/active.html"
 			})
 			.otherwise({
 				redirectTo: "/"

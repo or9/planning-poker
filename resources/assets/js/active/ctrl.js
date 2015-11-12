@@ -1,9 +1,10 @@
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.controller("activeSessionsCtrl", Controller);
+	module.controller("activeSessionsCtrl", Controller);
 
 	function Controller ($scope, activeSessionsFactory) {
+		console.log("controlling active");
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.active", []));

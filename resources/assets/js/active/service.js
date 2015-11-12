@@ -1,11 +1,13 @@
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.factory("activeSessionsService", Factory);
+	module.factory("activeSessionsService", Factory);
 
 	function Factory ($http) {
+		console.log("servicing active");
+
 		return {
 		};
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.active"));

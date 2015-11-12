@@ -1,8 +1,10 @@
-(function (app, undefined) {
+(function (module, undefined) {
+	"use strict";
 
-	app.factory("sessionFactory", Factory);
+	module.factory("sessionFactory", Factory);
 
 	function Factory ($http) {
+		console.log("servicing session");
 
 		return {
 			users: users
@@ -12,4 +14,4 @@
 		}
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.session"));

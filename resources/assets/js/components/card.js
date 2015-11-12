@@ -1,7 +1,7 @@
-(function (undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	angular.module("directives.planning-card", [], directive);
+	module.directive("planning-card", directive);
 
 	function directive () {
 		return {
@@ -12,4 +12,4 @@
 		};
 	}
 
-})();
+})(angular.module("or9.directives.card", []));

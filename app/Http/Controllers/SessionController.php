@@ -8,25 +8,24 @@ use Redirect;
 class SessionController extends Controller 
 {
 
-	public function create ( $id = false ) 
+	public function create ( $id = NULL ) 
 	{
 
-
-		if ($id == false) {
+		if ( $id == NULL ) {
 			return $this->createRandomSession();
 		}
 
-		return Response::view("content");
+		return view("content", [ "message" => $id ]);
 	}
 
-	public function joinSession ( $id = false ) 
+	public function joinSession ( $id = NULL ) 
 	{
 
-		if ($id == false) {
-			return Redirect::route("createSession");
+		if ( $id == NULL ) {
+			return $this->createRandomSession();
 		}
 
-		return Response::view("content");
+		return view("content", [ "message" => $id ]);
 
 	}
 

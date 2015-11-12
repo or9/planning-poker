@@ -1,9 +1,10 @@
-(function (app, undefined) {
+(function (module, undefined) {
+	"use strict";
 
-	app.controller("sessionCtrl", Controller);
+	module.controller("sessionCtrl", Controller);
 
 	function Controller ($scope, sessionFactory) {
 		console.log("controlling session");
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.session", []));

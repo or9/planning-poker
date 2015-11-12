@@ -1,7 +1,12 @@
 (function (undefined) {
 	"use strict";
 
-	angular.module("planning-poker", ["ngRoute"])
+	angular.module("planning-poker", [
+		"ngRoute",
+		"planning-poker.ctrl.session",
+		"planning-poker.ctrl.active",
+		"or9.directives.cards"
+		])
 		.config(config)
 		.run(run);
 
@@ -15,17 +20,17 @@
 			.when("/", {
 				controller: "indexCtrl",
 				controllerAs: "INDEX",
-				templateUrl: "js/views/index.html"
+				templateUrl: "/js/views/index.html"
 			})
 			.when("/:SESSION_ID", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
-				templateUrl: "js/views/session.html"
+				templateUrl: "/js/views/session.html"
 			})
 			.when("/active", {
 				controller: "activeSessionsCtrl",
 				controllerAs: "ACTIVE",
-				templateUrl: "js/views/active.html"
+				templateUrl: "/js/views/active.html"
 			})
 			.otherwise({
 				redirectTo: "/"
@@ -61,21 +66,24 @@
 
 })(angular.module("planning-poker"));
 
-(function (app, undefined) {
+(function (module, undefined) {
+	"use strict";
 
-	app.controller("sessionCtrl", Controller);
+	module.controller("sessionCtrl", Controller);
 
 	function Controller ($scope, sessionFactory) {
 		console.log("controlling session");
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.session", []));
 
-(function (app, undefined) {
+(function (module, undefined) {
+	"use strict";
 
-	app.factory("sessionFactory", Factory);
+	module.factory("sessionFactory", Factory);
 
 	function Factory ($http) {
+		console.log("servicing session");
 
 		return {
 			users: users
@@ -85,34 +93,37 @@
 		}
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.session"));
 
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.controller("activeSessionsCtrl", Controller);
+	module.controller("activeSessionsCtrl", Controller);
 
 	function Controller ($scope, activeSessionsFactory) {
+		console.log("controlling active");
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.active", []));
 
-(function (app, undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	app.factory("activeSessionsService", Factory);
+	module.factory("activeSessionsService", Factory);
 
 	function Factory ($http) {
+		console.log("servicing active");
+
 		return {
 		};
 	}
 
-})(angular.module("planning-poker"));
+})(angular.module("planning-poker.ctrl.active"));
 
-(function (undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	angular.module("directive.cards", ["directive.planning-card"], directive);
+	module.directive("planning-cards", directive);
 
 	function directive () {
 		return {
@@ -123,12 +134,12 @@
 		};
 	}
 
-})();
+})(angular.module("or9.directives.cards", ["or9.directives.card"]));
 
-(function (undefined) {
+(function (module, undefined) {
 	"use strict";
 
-	angular.module("directives.planning-card", [], directive);
+	module.directive("planning-card", directive);
 
 	function directive () {
 		return {
@@ -139,6 +150,6 @@
 		};
 	}
 
-})();
+})(angular.module("or9.directives.card", []));
 
 //# sourceMappingURL=app.js.map

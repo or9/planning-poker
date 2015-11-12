@@ -1,17 +1,30 @@
 var elixir = require('laravel-elixir');
+var gulp = require("gulp");
+var exec = require("child_process").exec;
+var sys = require("sys");
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+// elixir will override default gulp task and is useless
+// workaround is to place useful gulp task after
+elixir(elixirCrap);
+gulp.task("watch", watchTask);
 
-elixir(function(mix) {
+function watchTask () {
+	gulp.watch([
+		"resources/**/*",
+		"app/**/*"
+	], watchResult);
+}
+
+function watchResult (e) {
+
+	return exec("gulp", callback);
+
+	function callback (err, stdout) {
+		sys.puts(stdout);
+	}
+}
+
+function elixirCrap (mix) {
     mix.sass('app.scss');
 
     mix.scripts([
@@ -44,4 +57,5 @@ elixir(function(mix) {
 
     	], "public/js/views");
 
-});
+}
+

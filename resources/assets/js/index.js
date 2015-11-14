@@ -12,7 +12,8 @@
 			"$interpolateProvider",
 			config ])
 
-		.run(run);
+		.run([ "$rootScope", 
+		     run ]);
 
 	function config ($routeProvider, $interpolateProvider) {
 
@@ -25,23 +26,38 @@
 				controllerAs: "INDEX",
 				templateUrl: "/js/views/index.html"
 			})
-			.when("/session/:SESSION_ID", {
+
+			.when("/:SESSION_ID", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
 				templateUrl: "/js/views/session.html"
 			})
+
 			.when("/active", {
 				controller: "activeSessionsCtrl",
 				controllerAs: "ACTIVE",
 				templateUrl: "/js/views/active.html"
 			})
-			.otherwise({
-				redirectTo: "/"
-			});
+
+			.when("/points", {
+				controller: "",
+				controllerAs: "",
+				templateUrl: ""
+			})
+
+			.when("/relative", {
+				controller: "",
+				controllerAs: "",
+				templateUrl: ""
+			})
+			
+			.otherwise({ redirectTo: "/" });
 	}
 
-	function run () {
-
+	function run ($rootScope) {
+		var sessionIdContainer = doc.querySelector("#flash");
+		$rootScope.sessionId = sessionIdContainer.innerHTML;
+		sessionIdContainer.innerHTML = "";
 	}
 
 })(document);

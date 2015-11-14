@@ -12,7 +12,8 @@
 			"$interpolateProvider",
 			config ])
 
-		.run(run);
+		.run([ "$rootScope", 
+		     run ]);
 
 	function config ($routeProvider, $interpolateProvider) {
 
@@ -25,23 +26,38 @@
 				controllerAs: "INDEX",
 				templateUrl: "/js/views/index.html"
 			})
-			.when("/session/:SESSION_ID", {
+
+			.when("/:SESSION_ID", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
 				templateUrl: "/js/views/session.html"
 			})
+
 			.when("/active", {
 				controller: "activeSessionsCtrl",
 				controllerAs: "ACTIVE",
 				templateUrl: "/js/views/active.html"
 			})
-			.otherwise({
-				redirectTo: "/"
-			});
+
+			.when("/points", {
+				controller: "",
+				controllerAs: "",
+				templateUrl: ""
+			})
+
+			.when("/relative", {
+				controller: "",
+				controllerAs: "",
+				templateUrl: ""
+			})
+			
+			.otherwise({ redirectTo: "/" });
 	}
 
-	function run () {
-
+	function run ($rootScope) {
+		var sessionIdContainer = doc.querySelector("#flash");
+		$rootScope.sessionId = sessionIdContainer.innerHTML;
+		sessionIdContainer.innerHTML = "";
 	}
 
 })(document);
@@ -53,14 +69,8 @@
 
 	function Controller ($scope, indexFactory) {
 
-		this.sessionId = "";
-		this.navigate = navigate.bind(this);
+		console.log("controlling index");
 
-
-		function navigate (thing) {
-			console.log("what's thing? ", thing);
-			//this.location.path = location;
-		}
 
 	}
 
@@ -143,7 +153,7 @@
 
 	function directive () {
 		return {
-			scope: "isolate",
+			scope: {},
 			templateUrl: "/js/components/cards.html",
 			replace: true,
 			restrict: "E"
@@ -159,7 +169,9 @@
 
 	function directive () {
 		return {
-			scope: "isolate",
+			scope: {
+				number: "=number"
+			},
 			templateUrl: "/js/components/card.html",
 			replace: true,
 			restrict: "E"

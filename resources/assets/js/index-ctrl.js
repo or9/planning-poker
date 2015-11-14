@@ -5,14 +5,8 @@
 
 	function Controller ($scope, indexFactory) {
 
-		this.sessionId = "";
-		this.navigate = navigate.bind(this);
+		console.log("controlling index");
 
-
-		function navigate (thing) {
-			console.log("what's thing? ", thing);
-			//this.location.path = location;
-		}
 
 	}
 

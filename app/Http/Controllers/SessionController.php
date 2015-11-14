@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Request;
 use Response;
 use Redirect;
 

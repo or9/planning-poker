@@ -10,14 +10,18 @@ gulp.task("watch", watchTask);
 
 function watchTask () {
 	gulp.watch([
-		"resources/**/*",
-		"app/**/*"
-	], watchResult);
+		"resources/**/*"
+	], watchResult.bind(gulp, "gulp"));
+
+	gulp.watch([
+		"app/**/*.php",
+		"tests/**/*"
+	], watchResult.bind(gulp, "phpunit"));
 }
 
-function watchResult (e) {
+function watchResult (cmd, e) {
 
-	return exec("gulp", callback);
+	return exec(cmd, callback);
 
 	function callback (err, stdout) {
 		sys.puts(stdout);

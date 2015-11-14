@@ -5,7 +5,9 @@
 
 	function directive () {
 		return {
-			scope: "isolate",
+			scope: {
+				number: "=number"
+			},
 			templateUrl: "/js/components/card.html",
 			replace: true,
 			restrict: "E"

@@ -7,4 +7,6 @@
 		console.log("controlling session");
 	}
 
-})(angular.module("planning-poker.ctrl.session", []));
+})(angular.module("planning-poker.ctrl.session", [
+	"planning-poker.service.session"
+]));

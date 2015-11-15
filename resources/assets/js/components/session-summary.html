@@ -1,0 +1,13 @@
+<fieldset id="[[ session.id ]]">
+
+	<legend>[[ session.name ]]</legend>
+
+	<input type="text" value="[[session.type]]" readonly />
+
+	<ul class="users">
+		<li ng-repeat="user in session.users">
+			[[ user ]]
+		</li>
+	</ul>
+
+</fieldset>

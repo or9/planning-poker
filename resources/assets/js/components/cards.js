@@ -12,4 +12,6 @@
 		};
 	}
 
-})(angular.module("or9.directives.cards", ["or9.directives.card"]));
+})(angular.module("or9.directives.cards", [
+	"or9.directives.card"
+]));

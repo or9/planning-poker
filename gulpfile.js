@@ -32,8 +32,8 @@ function elixirCrap (mix) {
 	mix.sass('app.scss');
 
 	mix.scripts([
-		"../bower_components/angular/angular.min.js",
-		"../bower_components/angular-route/angular-route.min.js"
+		"../bower_components/angular/angular.js",
+		"../bower_components/angular-route/angular-route.js"
 	], "public/js/vendor.js");
 
 	mix.scripts([
@@ -48,7 +48,9 @@ function elixirCrap (mix) {
 		"../js/active/service.js",
 
 		"../js/components/cards.js",
-		"../js/components/card.js"
+		"../js/components/card.js",
+		
+		"../js/components/session-summary.js"
 
 	], "public/js/app.js");
 

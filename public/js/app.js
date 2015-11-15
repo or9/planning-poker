@@ -71,11 +71,27 @@
 
 		console.log("controlling index");
 
+		this.scoringType = "";
+
+		this.sessions = [{
+			id: 0,
+			name: "default",
+			users: [],
+			type: this.scoringType
+		}];
+
+		this.typeChange = typeChange;
+
+		function typeChange (element) {
+			console.log("change");
+		}
+
 
 	}
 
 })(angular.module("planning-poker.ctrl.index", [
-	"or9.directives.cards"
+	//"or9.directives.cards"
+	"or9.directives.sessionSummary"
 ]));
 
 (function (module, undefined) {
@@ -101,7 +117,9 @@
 		console.log("controlling session");
 	}
 
-})(angular.module("planning-poker.ctrl.session", []));
+})(angular.module("planning-poker.ctrl.session", [
+	"planning-poker.service.session"
+]));
 
 (function (module, undefined) {
 	"use strict";
@@ -119,7 +137,7 @@
 		}
 	}
 
-})(angular.module("planning-poker.ctrl.session"));
+})(angular.module("planning-poker.service.session", []));
 
 (function (module, undefined) {
 	"use strict";
@@ -160,7 +178,9 @@
 		};
 	}
 
-})(angular.module("or9.directives.cards", ["or9.directives.card"]));
+})(angular.module("or9.directives.cards", [
+	"or9.directives.card"
+]));
 
 (function (module, undefined) {
 	"use strict";
@@ -179,5 +199,23 @@
 	}
 
 })(angular.module("or9.directives.card", []));
+
+(function (module, undefined) {
+	"use strict";
+
+	module.directive("sessionSummary", directive);
+
+	function directive () {
+		return {
+			scope: {
+				session: "=session"
+			},
+			templateUrl: "/js/components/session-summary.html",
+			replace: true,
+			restrict: "E"
+		};
+	}
+
+})(angular.module("or9.directives.sessionSummary", []));
 
 //# sourceMappingURL=app.js.map

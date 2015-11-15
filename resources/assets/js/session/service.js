@@ -14,4 +14,4 @@
 		}
 	}
 
-})(angular.module("planning-poker.ctrl.session"));
+})(angular.module("planning-poker.service.session", []));

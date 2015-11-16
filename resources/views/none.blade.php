@@ -5,12 +5,12 @@
 
 	<h2>Join or Create</h2>
 	<p>You probably want to join a session. How about this one? 
-		<ng-href="/{{{message}}}">{{{ $message }}}</ng-href>
+		<a href="/s/{{{ $message }}}">{{{ $message }}}</a>
 	</p>
 
 	<p>
 		<ul>
-		<li>// Considerations</li>
+		<li>// Considerations:</li>
 		<li>// Is `room` open?</li>
 		<li>// Is `room` occupied?</li>
 		<ul><li>// Occupied by your group?</li></ul>

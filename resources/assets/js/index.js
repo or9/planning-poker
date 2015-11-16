@@ -27,7 +27,7 @@
 				templateUrl: "/js/views/index.html"
 			})
 
-			.when("/:SESSION_ID", {
+			.when("/join", {
 				controller: "sessionCtrl",
 				controllerAs: "SESSION",
 				templateUrl: "/js/views/session.html"
@@ -37,18 +37,6 @@
 				controller: "activeSessionsCtrl",
 				controllerAs: "ACTIVE",
 				templateUrl: "/js/views/active.html"
-			})
-
-			.when("/points", {
-				controller: "",
-				controllerAs: "",
-				templateUrl: ""
-			})
-
-			.when("/relative", {
-				controller: "",
-				controllerAs: "",
-				templateUrl: ""
 			})
 			
 			.otherwise({ redirectTo: "/" });

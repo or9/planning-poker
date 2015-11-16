@@ -5,15 +5,15 @@
 
 	function Controller ($scope, indexFactory) {
 
-		console.log("controlling index");
-
 		this.scoringType = "";
+		this.sessionId = 0;
 
 		this.sessions = [{
 			id: 0,
 			name: "default",
 			users: [],
-			type: this.scoringType
+			type: this.scoringType,
+			private: false
 		}];
 
 		this.typeChange = typeChange;

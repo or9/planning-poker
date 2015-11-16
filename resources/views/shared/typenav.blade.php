@@ -1,6 +1,8 @@
 @section("type")
 
-<nav ng-controller="indexCtrl as INDEX">
+<nav ng-controller="indexCtrl as INDEX"
+	ng-init="INDEX.sessionId = {{{ $message }}}">
+
 	<fieldset>
 		<legend>Scoring Type</legend>
 

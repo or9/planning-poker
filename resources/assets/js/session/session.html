@@ -1,6 +1,26 @@
-<h1>Session</h1>
-<h2>Users</h2>
-<ul ng-repeat"">
-</ul>
+<fieldset>
+	<legend>Players</legend>
+	<div ng-repeat"user in SESSION.users">
+		<label>[[ user.id ]]</label>
+		<input type="text" readonly value="[[ user.name ]]" />
+	</div>
+</fieldset>
 
-<cards />
+<fieldset>
+	<legend>User</legend>
+	<input type="text" value="[[ SESSION.user.id ]]" readonly/>
+	<input type="text" value="[[ SESSION.user.name ]]" />
+</fieldset>
+
+<fieldset>
+	<legend>Session</legend>
+	<input type="text" ng-model="SESSION.id" value="{{{ $message }}}" readonly />
+	<input type="text" value="[[ SESSION.type ]]" readonly />
+</fieldset>
+
+<number-card
+	ng-repeat="n in ['?', 0, 1, 2, 3, 5, 8, 13, 20, 40, 60, 100, '∞']"
+	on-click="SESSION.cardSelect( n )"
+	number="n">
+	[[ n ]]
+</number-card>

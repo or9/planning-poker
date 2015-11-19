@@ -1,0 +1,33 @@
+.card {
+	border: 1px solid #666;
+	padding: 20px;
+	font-size: 5em;
+	line-height: 1em;
+	color: #aaa;
+	background: #ddd;
+	display: inline-block;
+	position: relative;
+	min-width: 100px;
+	min-height: 130px;
+	text-align: center;
+
+	&:hover {
+		background: #eee;
+		color: #999;
+	}
+
+	&:active {
+		background: #fff;
+		color: #eef;
+	}
+
+	input {
+		display: none;
+	}
+}
+
+.selected {
+	@extend .card;
+	border-color: #fff;
+	color: #333;
+}

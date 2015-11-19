@@ -5,7 +5,7 @@
 
 	<h2>Join or Create</h2>
 	<p>You probably want to join a session. How about this one? 
-		<a href="/s/{{{ $message }}}">{{{ $message }}}</a>
+		<a href="/s/{{{ $message }}}/#join">{{{ $message }}}</a>
 	</p>
 
 	<p>

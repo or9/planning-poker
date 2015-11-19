@@ -33,12 +33,6 @@
 				templateUrl: "/js/views/session.html"
 			})
 
-			.when("/active", {
-				controller: "activeSessionsCtrl",
-				controllerAs: "ACTIVE",
-				templateUrl: "/js/views/active.html"
-			})
-			
 			.otherwise({ redirectTo: "/" });
 	}
 
@@ -53,9 +47,10 @@
 (function (module, doc, undefined) {
 	"use strict";
 
-	module.controller("indexCtrl", Controller);
+	module.controller("indexCtrl", ["$scope", "$rootScope", "indexFactory", Controller]);
 
-	function Controller ($scope, indexFactory) {
+	function Controller ($scope, $rootScope, indexFactory) {
+		console.log("controlling index");
 
 		this.scoringType = "";
 		this.sessionId = 0;
@@ -68,10 +63,11 @@
 			private: false
 		}];
 
-		this.typeChange = typeChange;
+		this.scoringTypeChange = scoringTypeChange.bind(this);
 
-		function typeChange (element) {
-			console.log("change");
+		function scoringTypeChange (element) {
+			console.log("change", element);
+			$rootScope.scoringType = this.scoringType;
 		}
 
 
@@ -99,15 +95,43 @@
 (function (module, undefined) {
 	"use strict";
 
-	module.controller("sessionCtrl", Controller);
+	module.controller("sessionCtrl", ["$scope", "$rootScope", "sessionFactory", Controller]);
 
-	function Controller ($scope, sessionFactory) {
+	Controller.prototype = Object.create(Controller.prototype, {
+		user: { writable: true, enumerable: true, value: userModel() },
+		users: { writable: true, enumerable: true, value: [] },
+
+		id: { writable: true, enumerable: true, value: 0 },
+
+		type: { writable: true, enumerable: true, value: "" }
+	});	
+
+	function Controller ($scope, $rootScope, sessionFactory) {
 		console.log("controlling session");
+
+		this.users.push(this.user);
+		this.type = $rootScope.scoringType;
+
+		this.test = function (thing) {console.log("wtf", thing);};
+		this.cardSelect = cardSelect;
+
+		function cardSelect (card) {
+			console.log("selected ", card);
+		}
+	}
+
+	function userModel () {
+		return {
+			id: 0,
+			name: "anonymous"
+		};
 	}
 
 })(angular.module("planning-poker.ctrl.session", [
-	"planning-poker.service.session"
+	"planning-poker.service.session",
+	"or9.directives.numbercard"
 ]));
+
 
 (function (module, undefined) {
 	"use strict";
@@ -159,34 +183,38 @@
 
 	function directive () {
 		return {
-			scope: {},
+			scope: {
+				select: "&onSelect",
+				shit: "=bullShit"
+			},
 			templateUrl: "/js/components/cards.html",
+			transclude: true,
 			replace: true,
 			restrict: "E"
 		};
 	}
 
-})(angular.module("or9.directives.cards", [
-	"or9.directives.card"
-]));
+})(angular.module("or9.directives.cards", []));
 
 (function (module, undefined) {
 	"use strict";
 
-	module.directive("planningCard", directive);
+	module.directive("numberCard", directive);
 
 	function directive () {
 		return {
 			scope: {
-				number: "=number"
+				number: "=number",
+				select: "&onClick"
 			},
+			transclude: true,
 			templateUrl: "/js/components/card.html",
 			replace: true,
 			restrict: "E"
 		};
 	}
 
-})(angular.module("or9.directives.card", []));
+})(angular.module("or9.directives.numbercard", []));
 
 (function (module, undefined) {
 	"use strict";

@@ -1,2 +1,27 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "resources/assets/sass/normalize";
+@import "resources/assets/sass/cards";
+
+$font: 100%/100% normal normal Helvetica, sans-serif;
+
+$colorPrimary: #333;
+$colorSecondary: #dbf;
+
+body {
+	font: $font;
+	background: #000;
+	color: #fff;
+}
+
+div, fieldset {
+	box-sizing: border-box;
+}
+
+fieldset {
+	display: inline-block;
+}
+
+input {
+	color: #333;
+}

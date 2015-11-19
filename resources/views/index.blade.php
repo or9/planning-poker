@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Poker Planning</title>
 
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
 	<script src="{{ asset('/js/vendor.js') }}"></script>
 
 	<script src="{{ asset('/js/app.js') }}"></script>
@@ -17,7 +18,10 @@
     <body ng-app="planning-poker">
 	@section("header")
 
-	<nav><h1>Root</h1><a href="#">Home</a></nav>
+	<nav>
+		<h1>Root</h1>
+		<a href="/">Home</a>
+	</nav>
 	
 	<p id="flash" class="flash">{{{ $message or "" }}}</p>
 	@show

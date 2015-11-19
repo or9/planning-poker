@@ -1,9 +1,10 @@
 (function (module, doc, undefined) {
 	"use strict";
 
-	module.controller("indexCtrl", Controller);
+	module.controller("indexCtrl", ["$scope", "$rootScope", "indexFactory", Controller]);
 
-	function Controller ($scope, indexFactory) {
+	function Controller ($scope, $rootScope, indexFactory) {
+		console.log("controlling index");
 
 		this.scoringType = "";
 		this.sessionId = 0;
@@ -16,10 +17,11 @@
 			private: false
 		}];
 
-		this.typeChange = typeChange;
+		this.scoringTypeChange = scoringTypeChange.bind(this);
 
-		function typeChange (element) {
-			console.log("change");
+		function scoringTypeChange (element) {
+			console.log("change", element);
+			$rootScope.scoringType = this.scoringType;
 		}
 
 

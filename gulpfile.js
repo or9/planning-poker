@@ -29,7 +29,9 @@ function watchResult (cmd, e) {
 }
 
 function elixirCrap (mix) {
-	mix.sass('app.scss');
+	mix.sass([
+		'app.scss'
+	]);
 
 	mix.scripts([
 		"../bower_components/angular/angular.js",

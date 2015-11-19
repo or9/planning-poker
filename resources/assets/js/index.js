@@ -33,12 +33,6 @@
 				templateUrl: "/js/views/session.html"
 			})
 
-			.when("/active", {
-				controller: "activeSessionsCtrl",
-				controllerAs: "ACTIVE",
-				templateUrl: "/js/views/active.html"
-			})
-			
 			.otherwise({ redirectTo: "/" });
 	}
 

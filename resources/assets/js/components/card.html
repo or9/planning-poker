@@ -1,4 +1,4 @@
-<fieldset class="card">
+<fieldset class="card" ng-click="select({ n: number })">
 
 	<input 
 		type="radio" 
@@ -6,11 +6,7 @@
 		id="c[[ number ]]" 
 		value="[[ number ]]" />
 
-	<label for="c[[ number ]]">
-
-		[[ number ]]
-
-	</label>
+	<label for="c[[ number ]]" ng-transclude></label>
 
 
 </fieldset>

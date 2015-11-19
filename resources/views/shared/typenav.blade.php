@@ -10,13 +10,15 @@
 		<input id="scoring_points" 
 			type="radio" 
 			ng-model="scoringType"
-			value="points" />
+			value="points"
+			ng-click="INDEX.scoringTypeChange('points')" />
 
 		<label for="scoring_relative">Relative</label>
 		<input id="scoring_relative" 
 			type="radio" 
 			ng-model="scoringType"
-			value="relative" />
+			value="relative"
+			ng-click="INDEX.scoringTypeChange('relative')" />
 
 	</fieldset>
 

@@ -1,17 +1,19 @@
 (function (module, undefined) {
 	"use strict";
 
-	module.directive("planningCard", directive);
+	module.directive("numberCard", directive);
 
 	function directive () {
 		return {
 			scope: {
-				number: "=number"
+				number: "=number",
+				select: "&onClick"
 			},
+			transclude: true,
 			templateUrl: "/js/components/card.html",
 			replace: true,
 			restrict: "E"
 		};
 	}
 
-})(angular.module("or9.directives.card", []));
+})(angular.module("or9.directives.numbercard", []));
